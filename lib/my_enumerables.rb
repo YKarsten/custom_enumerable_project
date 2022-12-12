@@ -40,6 +40,14 @@ module Enumerable
     result
   end
 
+  def my_map
+    return self unless block_given?
+
+    result = []
+    my_each_with_index { |element, index| result[index] = yield element}
+    result
+  end
+
 
 end
 
