@@ -8,6 +8,31 @@ module Enumerable
     end
   end
 
+  def my_select
+    return self unless block_given?
+
+    result = []
+    my_each { |element| result.push(element) if yield element}
+    result
+  end
+
+  def my_all?
+    return self unless block_given?
+
+    result = true
+    my_each { |element| result = false unless yield element}
+    result
+  end
+
+  def my_none?
+    return self unless block_given?
+
+    result = true
+    my_each { |element| result = false if yield element}
+    result
+  end
+
+
 end
 
 # You will first have to define my_each
